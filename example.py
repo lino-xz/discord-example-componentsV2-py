@@ -1,12 +1,12 @@
 import os
+import sys
 import discord
 from discord import ui
 from discord.ext import commands
 
 BOT_TOKEN: str = "YOUR_BOT_TOKEN"
 COMMAND_PREFIX: str = "!"
-gateway_intents: discord.Intents = discord.Intents.default()
-gateway_intents.message_content = True
+gateway_intents = discord.Intents.all()
 
 
 class CustomView(ui.LayoutView):
@@ -68,10 +68,14 @@ async def dz_command(ctx: commands.Context) -> None:
 
 if __name__ == "__main__":
     if BOT_TOKEN == "YOUR_BOT_TOKEN" or not BOT_TOKEN:
-        raise ValueError("ERROR: Sai token. Nhập lại 'BOT_TOKEN'!")
+        print("[!] ERROR: Token trống hoặc chưa cấu hình!")
+        sys.exit(1)
         
     try:
-    	bot.run(BOT_TOKEN)
+        bot.run(BOT_TOKEN)
+    except discord.errors.LoginFailure:
+        print("[!] ERROR: Token không hợp lệ!")
+        sys.exit(1)
     except KeyboardInterrupt:
-    	print("\n[!] Bot đã dừng!")
-    
+        print("\n[!] Bot đã dừng!")
+        
