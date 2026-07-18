@@ -12,11 +12,11 @@ gateway_intents.message_content = True
 class CustomView(ui.LayoutView):
     def __init__(self, footer_text: str) -> None:
         super().__init__(timeout=None)
-        container = ui.Container(accent_color=None)  # Tạo Container + xoá viền bên trái
+        container = ui.Container(accent_color=None)  # Tạo Container + xoá viền dọc
         container.add_item(ui.TextDisplay("## Components V2 Test"))  # Tiêu đề lớn
-        container.add_item(ui.Separator())  # Chèn đường kẻ ngang
+        container.add_item(ui.Separator())  # Chèn đường kẻ
         container.add_item(ui.TextDisplay("-# Đẹp trai vl"))  # Ghi chú
-        container.add_item(ui.Separator())  # Chèn đường kẻ ngang
+        container.add_item(ui.Separator())  # Chèn đường kẻ
         
         main_content = (  # Nội dung
             "### Text\n"  # Tiêu đề nhỏ
@@ -31,17 +31,17 @@ class CustomView(ui.LayoutView):
         )
         
         container.add_item(ui.TextDisplay(main_content))  # Nạp nội dung vào Container
-        container.add_item(ui.Separator())  # Chèn đường kẻ ngang
-        container.add_item(ui.TextDisplay(footer_text))  # Thêm footer vào dưới cùng
-        container.add_item(ui.Separator())  # Chèn đường kẻ ngang nằm giữa footer và hàng nút bấm
+        container.add_item(ui.Separator())  # Chèn đường kẻ
+        container.add_item(ui.TextDisplay(footer_text))  # Thêm footer
+        container.add_item(ui.Separator())  # Chèn đường kẻ nằm giữa footer và hàng button
         
-        action_row = ui.ActionRow(  # Tạo khay chứa hàng nút bấm
+        action_row = ui.ActionRow(  # Tạo khay chứa button
             ui.Button(label="Server Support", style=discord.ButtonStyle.link, url="https://discord.gg/your-invite"),
             ui.Button(label="Your Channel", style=discord.ButtonStyle.link, url="https://youtube.com/@your-channel")
         )
         
-        container.add_item(action_row)  # Thêm khay chứa hàng nút bấm vào khối Container
-        self.add_item(container)  # Nạp toàn bộ item Container vào cấu trúc cây hiển thị của LayoutView
+        container.add_item(action_row)  # Thêm khay chứa button vào Container
+        self.add_item(container)  # Nạp Container vào cây layout của LayoutView để hiển thị
         
 
 class CoreBot(commands.Bot):
@@ -54,7 +54,7 @@ class CoreBot(commands.Bot):
 
     async def on_ready(self) -> None:
         print(f"==================================================")
-        print(f"✅ Bot logged in as: {self.user} | ID: {self.user.id}")
+        print(f"[✓] Bot logged in as: {self.user} | ID: {self.user.id}")
         print(f"==================================================")
 
 bot = CoreBot()
@@ -69,5 +69,9 @@ async def dz_command(ctx: commands.Context) -> None:
 if __name__ == "__main__":
     if BOT_TOKEN == "YOUR_BOT_TOKEN" or not BOT_TOKEN:
         raise ValueError("ERROR: Sai token. Nhập lại 'BOT_TOKEN'!")
-    bot.run(BOT_TOKEN)
+        
+    try:
+    	bot.run(BOT_TOKEN)
+    except KeyboardInterrupt:
+    	print("\n[!] Bot đã dừng!")
     
