@@ -36,11 +36,11 @@ class CustomView(ui.LayoutView):
         container.add_item(ui.Separator())  # Chèn đường kẻ nằm giữa footer và hàng button
         
         action_row = ui.ActionRow(  # Tạo khay chứa button
-            ui.Button(label="Server Support", style=discord.ButtonStyle.link, url="https://discord.gg/your-invite"),
-            ui.Button(label="Your Channel", style=discord.ButtonStyle.link, url="https://youtube.com/@your-channel")
+            ui.Button(label="Server", style=discord.ButtonStyle.link, url="https://discord.gg/your-invite"),
+            ui.Button(label="YouTube", style=discord.ButtonStyle.link, url="https://youtube.com/@your-channel")
         )
         
-        container.add_item(action_row)  # Thêm khay chứa button vào Container
+        container.add_item(action_row)  # Nạp khay chứa button vào Container
         self.add_item(container)  # Nạp Container vào cây layout của LayoutView để hiển thị
         
 
