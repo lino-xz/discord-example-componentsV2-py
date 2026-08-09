@@ -68,14 +68,14 @@ async def dz_command(ctx: commands.Context) -> None:
 
 if __name__ == "__main__":
     if BOT_TOKEN == "YOUR_BOT_TOKEN" or not BOT_TOKEN:
-        print("[!] ERROR: Token trống hoặc chưa cấu hình!")
+        print("[!] ERROR: Token is empty or not configured!")
         sys.exit(1)
         
     try:
         bot.run(BOT_TOKEN)
     except discord.errors.LoginFailure:
-        print("[!] ERROR: Token không hợp lệ!")
+        print("[!] ERROR: Invalid token!")
         sys.exit(1)
     except KeyboardInterrupt:
-        print("\n[!] Bot đã dừng!")
+        print("\n[!] Bot stopped!")
         
