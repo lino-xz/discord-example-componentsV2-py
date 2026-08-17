@@ -700,7 +700,7 @@ async def on_button_click(self, interaction: discord.Interaction):
 ---
 
 # Support Server
-https://discord.gg/8fTGEVGtFM
+https://discord.gg/3SngpfcgVT
 
 ---
 
